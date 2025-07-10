@@ -1,5 +1,5 @@
 import "../css/MovieCard.css"
-
+import LikeButton from "./LikeButton.jsx";
 export default function MovieCard({movie}){
     function onFav(){
 
@@ -9,7 +9,7 @@ export default function MovieCard({movie}){
             <div className="movie-poster">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
                 <div className="movie-overlay">
-                    <button className="favorite-btn" onClick={onFav}><i className="fa-regular fa-heart"></i></button>
+                    <button className="favorite-btn" onClick={onFav}><LikeButton/></button>
                 </div>
             </div>
             <div className="movie-info">
