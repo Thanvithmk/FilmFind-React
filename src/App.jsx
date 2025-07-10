@@ -3,10 +3,10 @@ import './css/App.css'
 import Home from './Pages/Home'
 import Favorites from './Pages/Favorites'
 import NavBar from './Components/NavBar'
-
+import { MovieProvider } from './Contexts/MovieContext'
 function App() {
   return (
-    <div>
+    <MovieProvider>
       <NavBar/>
     <main className='main-content'>
       <Routes>
@@ -15,7 +15,7 @@ function App() {
       </Routes>
     </main>  
 
-    </div>
+    </MovieProvider>
       
   )
 }
