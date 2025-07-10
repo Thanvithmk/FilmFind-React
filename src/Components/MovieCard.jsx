@@ -8,8 +8,8 @@ export default function MovieCard({movie}){
         <div className="movie-card">
             <div className="movie-poster">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
-                <div className="movir-overlay">
-                    <button className="favorite-btn" onClick={onFav}>❤️</button>
+                <div className="movie-overlay">
+                    <button className="favorite-btn" onClick={onFav}><i className="fa-regular fa-heart"></i></button>
                 </div>
             </div>
             <div className="movie-info">

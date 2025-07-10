@@ -10,6 +10,8 @@ export default function Home() {
     const [error,setError]=useState(null);
     const [loading,setLoading]=useState(true);
 
+    
+
     useEffect(()=>{
         const loadPopularMovies=async()=>{
             try{
@@ -26,10 +28,24 @@ export default function Home() {
         loadPopularMovies();
     },[])
 
-    const handleSearch = (e) => {
+    const handleSearch =async (e) => {
         e.preventDefault();
-        alert(search);
-        // setSearch("....."); // Only use this if resetting the input is intended
+        
+        if(!search.trim())return 
+        if(loading) return 
+        setLoading(true)
+
+        try {
+            const searchResults =await searchMovies(search)
+            setMovies(searchResults)
+            setError(null)
+
+        }catch(err){
+            setError("Failed to fetch movies...")
+        }finally{
+            setLoading(false)
+        }
+        setSearch("");
     };
 
     return (
