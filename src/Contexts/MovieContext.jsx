@@ -3,7 +3,7 @@ import { createContext,useState,useContext,useEffect } from "react";
 const MovieContext=createContext()
 
 export const useMovieContext=()=>{
-    useContext(MovieContext)
+    return useContext(MovieContext)
 }
 
 export const MovieProvider=({children})=>{
@@ -20,15 +20,20 @@ export const MovieProvider=({children})=>{
     },[favorites])
 
     const addToFavorites=(movie)=>{
-        setFavorites(prev=>[...prev,movie])
+        // Added a check to prevent adding duplicates
+        if (!favorites.some(favMovie => favMovie.id === movie.id)) {
+            setFavorites(prev=>[...prev,movie])
+        }
     }
 
     const removeFromFavorites=(movieId)=>{
-        setFavorites(prev=>prev.filter(movie=>movie.if!==movieId))
+        // Corrected typo from movie.if to movie.id
+        setFavorites(prev=>prev.filter(movie=>movie.id!==movieId))
     }
 
     const isFavorite=(movieId)=>{
-        return favorites.some(movie=>movie.Id===movieId)
+        // Corrected typo from movie.Id to movie.id
+        return favorites.some(movie=>movie.id===movieId)
     }
 
     const value={
@@ -42,4 +47,3 @@ export const MovieProvider=({children})=>{
         {children}
     </MovieContext.Provider>
 }
-
