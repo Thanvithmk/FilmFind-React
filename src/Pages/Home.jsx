@@ -44,11 +44,16 @@ export default function Home() {
                 <button className="search-btn" type="submit">Search</button>
             </form>
 
+            {error && <div className="error-msg">{error}</div>}
+
+            {loading ? (<div className="loading">Loading...</div>):
             <div className="movies-grid">
                 {movies.map((movie) =>
                     (<MovieCard movie={movie} key={movie.id} />)
                 )}
-            </div>
+            </div>}
+
+    
         </div>
     );
 }
