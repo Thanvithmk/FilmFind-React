@@ -1,6 +1,5 @@
 import "../css/MovieCard.css"
 import { useMovieContext } from "../Contexts/MovieContext.jsx";
-import LikeButton from "./LikeButton.jsx";
 
 export default function MovieCard({movie}){
 
@@ -19,7 +18,9 @@ export default function MovieCard({movie}){
             <div className="movie-poster">
                 <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title}/>
                 <div className="movie-overlay">
-                    <button className={`favorite-btn ${favorite? "active" : ""}`} onClick={onFav}><LikeButton/></button>
+                    <button className={`favorite-btn ${favorite ? "active" : ""}`} onClick={onFav}>
+                    ♥
+                </button>
                 </div>
             </div>
             <div className="movie-info">
